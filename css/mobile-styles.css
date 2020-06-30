@@ -10,10 +10,8 @@
 
 
 */
-
-
-
-body {
+* {
+    margin 0;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 40px;
     background-color: lightgrey;
@@ -23,11 +21,7 @@ body {
 nav {
     display: flex;
     justify-content: flex-end;
-    text-align: right;
-    list-style-type: none;
-    margin:20px;
-    padding: 10px;
-    background-color: white;
+    
   }
 
 nav .nav-link {
@@ -35,11 +29,11 @@ nav .nav-link {
 
 }
 nav .nav-link:last-of-type {
-
+    margin-right: 0;
 }
 .hero {
-    backround: url(here);
-    background-size: contain;
+    background:url('/puntaCanaquand-je-vous-dis-une.jpg');
+    background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
     color: white;
