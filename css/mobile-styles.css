@@ -10,10 +10,12 @@
 
 
 */
+
+@import url('css/normalize.css')
 * {
-    margin 0;
+    margin: 0;
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 40px;
+    font-size: 50px;
     background-color: lightgrey;
 }
 
@@ -32,11 +34,11 @@ nav .nav-link:last-of-type {
     margin-right: 0;
 }
 .hero {
-    background:url('/puntaCanaquand-je-vous-dis-une.jpg');
+    background:url('https://media-cdn.tripadvisor.com/media/photo-m/1280/15/50/69/13/beautiful-punta-cana.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
-    color: white;
+    color: rgba(245, 239, 239);
     min-height: 33vh;
     display: flex;
     flex-direction: column;
@@ -47,9 +49,10 @@ nav .nav-link:last-of-type {
 
 .button {
     color: white;
-    background: lightskyblue;
+    background: rgba(231, 234, 236, 0.5);
     padding: 8px;
     border-radius: 4px;
+    max-width:50px;
     text-decoration: none;
     margin-top: 6px;
     display: inherit;
