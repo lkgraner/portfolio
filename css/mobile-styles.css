@@ -1,1 +1,63 @@
-/* Mobole Styles */
+/* Mobile Styles */
+
+/*
+1. Align nav link items to teh right of the screen
+2. Add white space around nav links
+3. Create a Hero component
+4. Add you name and little description about you to the hero
+5. Add a button that will eventually link to your contact form
+6. Usin MDN Import normalize.css (google it) via the css stylesheet must be in stylesheet
+
+
+*/
+
+
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 40px;
+    background-color: lightgrey;
+}
+
+
+nav {
+    display: flex;
+    justify-content: flex-end;
+    text-align: right;
+    list-style-type: none;
+    margin:20px;
+    padding: 10px;
+    background-color: white;
+  }
+
+nav .nav-link {
+    margin-right: 16px;
+
+}
+nav .nav-link:last-of-type {
+
+}
+.hero {
+    backround: url(here);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+    color: white;
+    min-height: 33vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px 44px;
+
+}
+
+.button {
+    color: white;
+    background: lightskyblue;
+    padding: 8px;
+    border-radius: 4px;
+    text-decoration: none;
+    margin-top: 6px;
+    display: inherit;
+
+}
