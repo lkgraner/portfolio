@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+<style>
+    input {
+        width: 276px;
+        background-color: darkslategrey;
+        font-size: 28px;
+        color: white;
+        padding:10px;
+        text-align: right;
+    }
+    button {
+        width:75px;
+        height:75px;
+        font-size: 18px;
+        border-color: darkslategrey ;
+        color: white;      
+    }
+
+   button.digits {
+    width:75px;
+        background-color: black;
+        height:75px;
+        font-size: 18px;
+        color: white;
+    }
+    button.funcs {
+        background-color:  rgb(29, 50, 51);
+    }
+
+    button.equal {
+        background-color:  rgb(65, 105, 225);
+    }
+
+    /* button#zero { 
+         width:150px; 
+    }  */
+
+</style>
+<script>
+    //document.addEventListener('DOMcontentLoaded', function() {
+        // Do all the things in js section
+   // }
+    var y = "";
+            //find the substring d in y, it would return false, because it isn't found
+            var x = "david";
+            // find the substring d in x, it would return 0, because d is at position 0
+
+            // with the triple equals it prevents the next statement from evaluating as true accidentally.
+            if (x === y) {
+                alert("you won a million dolllars");
+            }
+
+    //initial values
+    var firstnum="";
+    var operator="";
+    var oper_was_last=false;
+    var should_we_perform_eq=false;
+    
+    //funcion to perform calculations
+    //@param {String} num String value of whatever is keyed in
+    function calc(num) {
+        var total = String(document.getElementById("total").value);
+            
+        switch (num) {
+            case "AC":
+                firstnum="";
+                operator="";
+                oper_was_last=false;
+                should_we_perform_eq=false;
+                document.getElementById("total").value = "0";
+                break;
+            case "C": 
+                document.getElementById("total").value = "0";
+                break;
+            case "+/-":
+                total = parseFloat(total) * -1;
+                document.getElementById("total").value = total;
+                break;
+            case "-":
+            case "*":
+            case "/":
+            case "+":
+                operator=num;
+                // if (firstnum !=== "") {
+                //     should_we_perform_eq = true;
+                // }
+                firstnum = total; // string numerical
+                oper_was_last = true;
+                break;
+            case "%":
+                // static number
+                //find decimal value after percentage
+                //
+                operator= num.trim(); //trim all white space
+                firstnum = total;
+                oper_was_last = true;
+                break;  
+            case "=":
+               // if (!should_we_perform_eq) {
+               //     break;
+               // }
+                let sum = 0;
+                switch(operator) {
+                    case "+":
+                        sum = parseFloat(firstnum) + parseFloat(total);
+                        break;
+                    case "-":
+                        sum = parseFloat(firstnum) - parseFloat(total);
+                        break;
+                    case "*":
+                        sum = parseFloat(firstnum) * parseFloat(total);
+                        break;
+                    case "/":
+                        sum = parseFloat(firstnum) / parseFloat(total);
+                        break;
+                    case "%":
+                        //sum = (parseFloat(firstnum) /100);
+                        sum = (parseFloat(firstnum) / 100) * parseFloat(total);
+                        break;    
+                    default:
+                        alert("invalid operation");
+                        console.error("invalid operation");
+                        break;
+                }
+                document.getElementById("total").value=sum;
+                //let sum = parseFloat(firstnum) + parseFloat(total);
+                //firstnum = sum;
+                break;
+            default:
+                // check to see if firstnum has a value, 
+                // if it does we need to clear total before putting the next number in the box
+
+                if (true === oper_was_last) {   ///is a truthy value
+                    total = "";  //resetting
+                    oper_was_last = false;
+                }
+
+                //checking for decimals
+                //find decimal via regex regex === regular expression
+                if (num === '.' && total.includes('.')) {
+                    num = "";
+                }
+
+                //logical operators
+                /*
+                    A: you drank tequila
+                    B: you drank burban
+
+                    A and B you drank both drinks together (mixed)
+                    A or B you drank either
+                    A xor B you drank both without mixin
+                
+                // Contrapositives
+                    !A and B: null
+
+                //verbose way
+                if (num === '.') {
+                    if (matches.length) {
+
+                    }
+                }
+
+                // check to see if there is a value in the total box
+                // if there is a value take the existing value and append the new number
+               
+                //check to see if value in total box
+                //if there is, append new number */
+                
+                if (total === "0") {
+                total = "";
+                }
+                num = String(num);
+                document.getElementById("total").value=total + num;
+                break;
+
+            //first iteration getting a 9, output is 9, oper_was_last=false
+            //second interation getting a 8, output is 98, oper_was_last=false
+            //third iteration getting a +, output is 98, firstnum is 98, oper_was_last=true
+            //fourth itertion getting a 8, output is 8, firstnum is 98
+            //fifth itertion, get a 7, output expected is 87
+        
+        }
+    }
+    
+    /*console.log('calc'); //would show word calc
+    console.log(calc); //would show calc defined from code  */
+</script>
+
+</head>
+<body>
+
+    <input id="total" type="text" name="calculation" readonly="true" value="0">
+    <br><button class="funcs" onClick="calc('AC')">AC</button><button class="funcs" onClick="calc('C')">C</button><button class="funcs" onClick="calc('%')">%</button><button class="funcs" onClick="calc('/')">/</button>
+    <br>
+    <button class="digits" onClick="calc(7)">7</button><button class="digits" onClick="calc(8)">8</button><button class="digits" onClick="calc(9)">9</button><button class="funcs" onClick="calc('*')">*</button>
+    <br>
+    <button class="digits" onClick="calc(4)">4</button><button class="digits" onClick="calc(5)">5</button><button class="digits" onClick="calc(6)">6</button><button class="funcs" onClick="calc('-')">-</button>
+    <br>
+    <button class="digits" onClick="calc(1)">1</button><button class="digits" onClick="calc(2)">2</button><button class="digits" onClick="calc(3)">3</button><button class="funcs" onClick="calc('+')">+</button>
+    <br>
+    <button class="funcs" onClick="calc('+/-')">+/-</button><button class="digits" onClick="calc(0)">0</button><button class="digits" onClick="calc('.')">.</button><button class="equal" onClick="calc('=')">=</button>
+    
+</body>
+</html>
